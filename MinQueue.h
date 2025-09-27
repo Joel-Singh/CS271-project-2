@@ -29,6 +29,11 @@ public:
   void build_heap();
   void sort(T *A);
   string to_string();
+
+private:
+  T* list();
+  int capacity;
+  int DEFAULT_LIST_SIZE;
 };
 
 #include "MinQueue.cpp"
