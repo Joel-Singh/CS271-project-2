@@ -11,43 +11,43 @@
 
 using namespace std;
 
-// void test_minqueue()
-// {
-//
-//     int *int_data = new int[10];
-//     for (int i = 0; i < 10; i++)
-//     {
-//         int_data[i] = 10 - i;
-//     }
-//
-//     try
-//     {
-//
-//         MinQueue<int> empty;
-//         string mq_str = empty.to_string();
-//
-//         if (mq_str != "")
-//         {
-//             cout << "Incorrect result from empty constructor. Expected an
-//             empty string but got : " << mq_str << endl;
-//         }
-//
-//         MinQueue<int> mq(int_data, 10);
-//         mq_str = mq.to_string();
-//
-//         if (mq_str != "1 2 4 3 6 5 8 10 7 9")
-//         {
-//             cout << "Incorrect result from empty constructor. Expected 1 2 4
-//             3 6 5 8 10 7 9 but got : " << mq_str << endl;
-//         }
-//     }
-//     catch (exception &e)
-//     {
-//         cerr << "Error creating the priority queue : " << e.what() << endl;
-//     }
-//
-//     delete[] int_data;
-// }
+void test_minqueue()
+{
+
+    int *int_data = new int[10];
+    for (int i = 0; i < 10; i++)
+    {
+        int_data[i] = 10 - i;
+    }
+
+    try
+    {
+
+        MinQueue<int> empty;
+        string mq_str = empty.to_string();
+
+        if (mq_str != "")
+        {
+            cout << "Incorrect result from empty constructor. Expected an" <<
+            "empty string but got : " << mq_str << endl;
+        }
+
+        // MinQueue<int> mq(int_data, 10);
+        // mq_str = mq.to_string();
+
+        // if (mq_str != "1 2 4 3 6 5 8 10 7 9")
+        // {
+        //     cout << "Incorrect result from empty constructor. Expected 1 2 4
+        //     3 6 5 8 10 7 9 but got : " << mq_str << endl;
+        // }
+    }
+    catch (exception &e)
+    {
+        cerr << "Error creating the priority queue : " << e.what() << endl;
+    }
+
+    delete[] int_data;
+}
 //
 // void test_insert()
 // {
@@ -480,7 +480,7 @@ struct StudentRecord {
 
 int main() {
 
-  // test_minqueue();
+  test_minqueue();
   // test_insert();
   // test_min();
   // test_extract_min();

@@ -26,3 +26,26 @@ template <typename T>
 	capacity = DEFAULT_LIST_SIZE;
 	list = new T[capacity];
 }
+
+//=========================================
+// destructor
+//=========================================
+// template <typename T>
+//         MinQueue<T>::~MinQueue      ( void ) {
+            
+//         }
+
+//=========================================
+// to_string
+//=========================================
+template <typename T>
+std::string 	MinQueue<T>::to_string	( void ) const {
+    
+	std::stringstream s;
+
+    for (int i = 0; i < size; i++) {
+        s << " " << list[i];
+    }
+
+    return s.str();
+}

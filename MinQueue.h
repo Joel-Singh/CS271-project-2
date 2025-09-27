@@ -16,24 +16,27 @@
 
 using namespace std;
 
+int DEFAULT_LIST_SIZE = 10;
+
 template <class T> class MinQueue {
 public:
   MinQueue();
-  ~MinQueue();
-  MinQueue(T *A, int n);
-  void insert(const T &item);
-  T min();
-  T extract_min();
-  void decrease(int i, T k);
-  void min_heapify(int i);
-  void build_heap();
-  void sort(T *A);
-  string to_string();
+  // ~MinQueue();
+  // MinQueue(T *A, int n);
+  // void insert(const T &item);
+  // T min();
+  // T extract_min();
+  // void decrease(int i, T k);
+  // void min_heapify(int i);
+  // void build_heap();
+  // void sort(T *A);
+  std::string to_string() const;
 
 private:
-  T* list();
+  int size;
+  T* list;
   int capacity;
-  int DEFAULT_LIST_SIZE;
+
 };
 
 #include "MinQueue.cpp"
