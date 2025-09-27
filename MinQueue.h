@@ -14,6 +14,8 @@
 #ifndef MINQUEUE_H
 #define MINQUEUE_H
 
+using namespace std;
+
 template <class T> class MinQueue {
 public:
   MinQueue();
@@ -23,6 +25,10 @@ public:
   T min();
   T extract_min();
   void decrease(int i, T k);
+  void min_heapify(int i);
+  void build_heap();
+  void sort(T *A);
+  string to_string();
 };
 
 #include "MinQueue.cpp"
