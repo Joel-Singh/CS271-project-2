@@ -21,7 +21,7 @@ int DEFAULT_LIST_SIZE = 10;
 template <class T> class MinQueue {
 public:
   MinQueue();
-  // ~MinQueue();
+  ~MinQueue();
   // MinQueue(T *A, int n);
   // void insert(const T &item);
   // T min();

@@ -30,10 +30,11 @@ template <typename T>
 //=========================================
 // destructor
 //=========================================
-// template <typename T>
-//         MinQueue<T>::~MinQueue      ( void ) {
-            
-//         }
+template <typename T>
+        MinQueue<T>::~MinQueue      ( void ) {
+    
+    delete []list;
+}
 
 //=========================================
 // to_string
