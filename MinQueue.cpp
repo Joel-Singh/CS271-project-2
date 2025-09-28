@@ -136,7 +136,7 @@ template <typename T> void min_heapify(int i) {
   int l = left(i);
   int r = right(i);
   int smallest;
-  
+
   if (l <= size && list[l] < list[i]) {
     smallest = l;
   } else {
@@ -151,22 +151,17 @@ template <typename T> void min_heapify(int i) {
     swap(i, smallest);
     min_heapify(smallest);
   }
-
 }
 
 //=================================================
 // left
 //=================================================
-template <typename T> int left(int i) {
-  return 2i+1;
-}
+template <typename T> int left(int i) { return 2i + 1; }
 
 //=================================================
 // right
 //=================================================
-template <typename T> int right(int i) {
-  return 2i+2;
-}
+template <typename T> int right(int i) { return 2i + 2; }
 
 //=================================================
 // swap
@@ -184,8 +179,8 @@ template <typename T> void swap(int i, int k) {
 // Arranges the member array into a min_heap
 //=================================================
 template <typename T> void build_heap() {
-  for (int i = size/2; i > 0; i--) {
-    min-heapify(i);
+  for (int i = size / 2; i > 0; i--) {
+    min - heapify(i);
   }
 }
 
