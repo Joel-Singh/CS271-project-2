@@ -37,6 +37,8 @@ private:
   int size;
   T *list;
   int capacity;
+  int left(int i);
+  int right(int i);
 };
 
 #include "MinQueue.cpp"

@@ -132,13 +132,62 @@ template <typename T> void decrease(int i, T k) {}
 // PARAMETERS:
 //  i: The index of a parent where the left and  right are subtrees
 //=================================================
-template <typename T> void min_heapify(int i) {}
+template <typename T> void min_heapify(int i) {
+  int l = left(i);
+  int r = right(i);
+  int smallest;
+  
+  if (l <= size && list[l] < list[i]) {
+    smallest = l;
+  } else {
+    smallest = i;
+  }
+
+  if (r <= size && list[r] < list[smallest]) {
+    smallest = r;
+  }
+
+  if (smallest != i) {
+    swap(i, smallest);
+    min_heapify(smallest);
+  }
+
+}
+
+//=================================================
+// left
+//=================================================
+template <typename T> int left(int i) {
+  return 2i+1;
+}
+
+//=================================================
+// right
+//=================================================
+template <typename T> int right(int i) {
+  return 2i+2;
+}
+
+//=================================================
+// swap
+//=================================================
+template <typename T> void swap(int i, int k) {
+  int copy;
+
+  copy = list[i];
+  list[i] = list[k];
+  list[k] = copy;
+}
 
 //=================================================
 // build_heap
 // Arranges the member array into a min_heap
 //=================================================
-template <typename T> void build_heap() {}
+template <typename T> void build_heap() {
+  for (int i = size/2; i > 0; i--) {
+    min-heapify(i);
+  }
+}
 
 //=================================================
 // sort
