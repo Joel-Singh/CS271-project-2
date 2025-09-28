@@ -35,9 +35,8 @@ public:
 
 private:
   int size;
-  T* list;
+  T *list;
   int capacity;
-
 };
 
 #include "MinQueue.cpp"
