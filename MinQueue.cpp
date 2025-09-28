@@ -63,9 +63,7 @@ template <typename T> string MinQueue<T>::to_string(void) const {
 template <typename T> MinQueue<T>::MinQueue(T *A, int n) {
   list = new T[DEFAULT_LIST_SIZE];
   size = n;
-  // if (n > DEFAULT_LIST_SIZE) {
 
-  // }
   for (int i = 0; i < n; i++) {
     list[i] = A[i];
   }
@@ -97,7 +95,9 @@ template <typename T> T &MinQueue<T>::operator[](int position) {
 // RETURN VALUE:
 //  T
 //=================================================
-template <typename T> T MinQueue<T>::min() {}
+template <typename T> T MinQueue<T>::min() {
+
+}
 
 //=================================================
 // extract_min
