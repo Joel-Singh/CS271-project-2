@@ -6,6 +6,7 @@
 // definitions for the MinQueue class
 //=========================================
 
+#include "MinQueue.h"
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
