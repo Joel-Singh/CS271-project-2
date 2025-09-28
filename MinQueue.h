@@ -24,12 +24,12 @@ public:
   ~MinQueue();
   MinQueue(T *A, int n);
   // void insert(const T &item);
-  // T min();
-  // T extract_min();
-  // void decrease(int i, T k);
-  // void min_heapify(int i);
-  // void build_heap();
-  // void sort(T *A);
+  T min();
+  T extract_min();
+  void decrease(int i, T k);
+  void min_heapify(int i);
+  void build_heap();
+  void sort(T *A);
   std::string to_string() const;
   T& operator[] ( int position );
 

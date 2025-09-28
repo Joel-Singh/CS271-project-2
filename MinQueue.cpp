@@ -91,3 +91,57 @@ template <typename T> T &MinQueue<T>::operator[](int position) {
     throw runtime_error("Invalid index\n");
   }
 }
+
+//=================================================
+// min
+// Returns the minimum from the MinQueue
+//
+// RETURN VALUE:
+//  T
+//=================================================
+template <typename T> T MinQueue<T>::min() {}
+
+//=================================================
+// extract_min
+// Returns and removes the minimum from the MinQueue
+//
+// RETURN VALUE:
+//  T
+//=================================================
+template <typename T> T MinQueue<T>::extract_min() {}
+
+//=================================================
+// decrease
+// Sets the element at index i to k with the assumption k is less than the
+// element at i
+//
+// PARAMETERS:
+//  i: The index to decrease
+//  k: What to decrease it to
+//=================================================
+template <typename T> void decrease(int i, T k) {}
+
+//=================================================
+// min_heapify
+// precondition: The left and right are subtrees
+// postcondition: the subheap at i will be a minheap
+//
+// PARAMETERS:
+//  i: The index of a parent where the left and  right are subtrees
+//=================================================
+template <typename T> void min_heapify(int i) {}
+
+//=================================================
+// build_heap
+// Arranges the member array into a min_heap
+//=================================================
+template <typename T> void build_heap() {}
+
+//=================================================
+// sort
+// Puts a sorted array consisting of the private member array's elements into A
+//
+// PARAMETERS:
+//  A: The array to put the sorted elements into
+//=================================================
+template <typename T> void sort(T *A) {}
