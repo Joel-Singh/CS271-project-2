@@ -22,7 +22,7 @@ template <class T> class MinQueue {
 public:
   MinQueue();
   ~MinQueue();
-  // MinQueue(T *A, int n);
+  MinQueue(T *A, int n);
   // void insert(const T &item);
   // T min();
   // T extract_min();
@@ -31,6 +31,7 @@ public:
   // void build_heap();
   // void sort(T *A);
   std::string to_string() const;
+  T& operator[] ( int position );
 
 private:
   int size;

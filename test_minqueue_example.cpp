@@ -32,14 +32,14 @@ void test_minqueue()
             "empty string but got : " << mq_str << endl;
         }
 
-        // MinQueue<int> mq(int_data, 10);
-        // mq_str = mq.to_string();
+        MinQueue<int> mq(int_data, 10);
+        mq_str = mq.to_string();
 
-        // if (mq_str != "1 2 4 3 6 5 8 10 7 9")
-        // {
-        //     cout << "Incorrect result from empty constructor. Expected 1 2 4
-        //     3 6 5 8 10 7 9 but got : " << mq_str << endl;
-        // }
+        if (mq_str != "1 2 4 3 6 5 8 10 7 9")
+        {
+            cout << "Incorrect result from empty constructor. Expected 1 2 4 " << 
+            "3 6 5 8 10 7 9 but got : " << mq_str << endl;
+        }
     }
     catch (exception &e)
     {
