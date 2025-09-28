@@ -72,8 +72,6 @@ template <typename T> MinQueue<T>::MinQueue(T *A, int n) {
 }
 
 //=========================================
-
-//=========================================
 // operator[]
 // This accesses and returns a value at a
 // specified position. Valid indices are 0
