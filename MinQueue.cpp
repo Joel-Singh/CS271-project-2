@@ -138,13 +138,13 @@ template <typename T> void MinQueue<T>::min_heapify(int i) {
   int r = right(i);
   int smallest;
 
-  if (l <= size && list[l] < list[i]) {
+  if (l < size && list[l] < list[i]) {
     smallest = l;
   } else {
     smallest = i;
   }
 
-  if (r <= size && list[r] < list[smallest]) {
+  if (r < size && list[r] < list[smallest]) {
     smallest = r;
   }
 

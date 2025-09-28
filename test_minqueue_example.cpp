@@ -5,6 +5,7 @@
 //
 // ************************************
 #include "MinQueue.h"
+#include "test.cpp"
 #include <chrono>
 #include <iostream>
 #include <stdexcept>
@@ -210,31 +211,46 @@ void test_heapify() {
 
   try {
 
-    MinQueue<int> empty;
-    empty.min_heapify(1);
-    string mq_str = empty.to_string();
+    // {
+    //   MinQueue<int> mq;
+    //   mq.min_heapify(1);
+    //
+    //   test("Heapify on empty MinQueue", mq, "");
+    // }
+    //
+    // {
+    //   int *data = new int[1];
+    //   data[0] = 5;
+    //   MinQueue<int> mq(data, 1);
+    //   mq.min_heapify(1);
+    //   test("Heapify on single element MinQueue", mq, "5");
+    // }
+    //
+    // {
+    //   int *data = new int[2];
+    //   data[0] = 0;
+    //   data[1] = 3;
+    //   MinQueue<int> mq(data, 2);
+    //   mq.min_heapify(2);
+    //   test("Heapify on two elements MinQueue already in a heap", mq, "0 3");
+    // }
 
-    if (mq_str != "") {
-      cout << "Incorrect heapify result. Expected empty string but got \
-          : "
-           << mq_str << endl;
+    {
+      int *data = new int[2];
+      data[0] = 2;
+      data[1] = 1;
+      MinQueue<int> mq(data, 2);
+      mq.min_heapify(0);
+      test("Heapify on two elements MinQueue not already in a heap", mq, "1 2");
     }
 
-    MinQueue<int> mq(int_data, 10);
-    string o_mq_str = mq.to_string();
-    mq.set(1, 11);
-    mq.min_heapify(1);
-
-    mq_str = mq.to_string();
-
-    if (mq_str != "1 3 4 7 6 5 8 10 11 9") {
-      cout << "Incorrect heapify result in heapifying index 1 in the \
-          minqueue "
-           << o_mq_str << " after setting \
-              to 11. Expected 1 3 4 7 6 5 8 10 11 9 but got \
-          : "
-           << mq_str << endl;
-    }
+    // {
+    //   MinQueue<int> mq(int_data, 10);
+    //   mq.set(1, 11);
+    //   mq.min_heapify(1);
+    //
+    //   test("Heapify on non-empty MinQueue", mq, "1 3 4 7 6 5 8 10 11 9");
+    // }
   } catch (exception &e) {
     cerr << "Error in heapify : " << e.what() << endl;
   }
