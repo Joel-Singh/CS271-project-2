@@ -199,52 +199,49 @@ void test_minqueue() {
 //     delete[] int_data;
 // }
 //
-// void test_heapify()
-// {
-//
-//     int *empty_data = new int[0];
-//
-//     int *int_data = new int[10];
-//     for (int i = 0; i < 10; i++)
-//     {
-//         int_data[i] = 10 - i;
-//     }
-//
-//     try
-//     {
-//
-//         MinQueue<int> empty;
-//         empty.min_heapify(1);
-//         string mq_str = empty.to_string();
-//
-//         if (mq_str != "")
-//         {
-//             cout << "Incorrect heapify result. Expected empty string but got
-//             : " << mq_str << endl;
-//         }
-//
-//         MinQueue<int> mq(int_data, 10);
-//         string o_mq_str = mq.to_string();
-//         mq.set(1, 11);
-//         mq.min_heapify(1);
-//
-//         mq_str = mq.to_string();
-//
-//         if (mq_str != "1 3 4 7 6 5 8 10 11 9")
-//         {
-//             cout << "Incorrect heapify result in heapifying index 1 in the
-//             minqueue " << o_mq_str << " after setting to 11. Expected 1 3 4 7
-//             6 5 8 10 11 9 but got : " << mq_str << endl;
-//         }
-//     }
-//     catch (exception &e)
-//     {
-//         cerr << "Error in heapify : " << e.what() << endl;
-//     }
-//
-//     delete[] empty_data;
-//     delete[] int_data;
-// }
+void test_heapify() {
+
+  int *empty_data = new int[0];
+
+  int *int_data = new int[10];
+  for (int i = 0; i < 10; i++) {
+    int_data[i] = 10 - i;
+  }
+
+  try {
+
+    MinQueue<int> empty;
+    empty.min_heapify(1);
+    string mq_str = empty.to_string();
+
+    if (mq_str != "") {
+      cout << "Incorrect heapify result. Expected empty string but got \
+          : "
+           << mq_str << endl;
+    }
+
+    MinQueue<int> mq(int_data, 10);
+    string o_mq_str = mq.to_string();
+    mq.set(1, 11);
+    mq.min_heapify(1);
+
+    mq_str = mq.to_string();
+
+    if (mq_str != "1 3 4 7 6 5 8 10 11 9") {
+      cout << "Incorrect heapify result in heapifying index 1 in the \
+          minqueue "
+           << o_mq_str << " after setting \
+              to 11. Expected 1 3 4 7 6 5 8 10 11 9 but got \
+          : "
+           << mq_str << endl;
+    }
+  } catch (exception &e) {
+    cerr << "Error in heapify : " << e.what() << endl;
+  }
+
+  delete[] empty_data;
+  delete[] int_data;
+}
 //
 // void test_build_min_heap()
 // {
@@ -478,7 +475,7 @@ int main() {
   // test_min();
   // test_extract_min();
   // test_decrease_key();
-  // test_heapify();
+  test_heapify();
   // test_build_min_heap();
   // test_heapsort();
   //

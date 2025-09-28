@@ -30,12 +30,14 @@ public:
   void min_heapify(int i);
   void build_heap();
   void sort(T *A);
+  void set(int i, T k);
   std::string to_string() const;
   T &operator[](int position);
 
 private:
   int size;
   T *list;
+  void swap(int i, int k);
   int capacity;
   int left(int i);
   int right(int i);

@@ -7,6 +7,7 @@
 //=========================================
 
 #include "MinQueue.h"
+#include <cassert>
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
@@ -132,7 +133,7 @@ template <typename T> void decrease(int i, T k) {}
 // PARAMETERS:
 //  i: The index of a parent where the left and  right are subtrees
 //=================================================
-template <typename T> void min_heapify(int i) {
+template <typename T> void MinQueue<T>::min_heapify(int i) {
   int l = left(i);
   int r = right(i);
   int smallest;
@@ -156,17 +157,17 @@ template <typename T> void min_heapify(int i) {
 //=================================================
 // left
 //=================================================
-template <typename T> int left(int i) { return 2i + 1; }
+template <typename T> int MinQueue<T>::left(int i) { return 2 * i + 1; }
 
 //=================================================
 // right
 //=================================================
-template <typename T> int right(int i) { return 2i + 2; }
+template <typename T> int MinQueue<T>::right(int i) { return 2 * i + 2; }
 
 //=================================================
 // swap
 //=================================================
-template <typename T> void swap(int i, int k) {
+template <typename T> void MinQueue<T>::swap(int i, int k) {
   int copy;
 
   copy = list[i];
@@ -178,9 +179,9 @@ template <typename T> void swap(int i, int k) {
 // build_heap
 // Arranges the member array into a min_heap
 //=================================================
-template <typename T> void build_heap() {
+template <typename T> void MinQueue<T>::build_heap() {
   for (int i = size / 2; i > 0; i--) {
-    min - heapify(i);
+    min_heapify(i);
   }
 }
 
@@ -192,3 +193,18 @@ template <typename T> void build_heap() {
 //  A: The array to put the sorted elements into
 //=================================================
 template <typename T> void sort(T *A) {}
+
+//=================================================
+// set
+// Set the element at `i` to `k`
+//
+// PARAMETERS:
+//  i: the index
+//  k: the new value
+//=================================================
+template <typename T> void MinQueue<T>::set(int i, T k) {
+  assert(i >= 0);
+  assert(i < size);
+
+  list[i] = k;
+}
