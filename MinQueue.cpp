@@ -20,9 +20,7 @@ using namespace std;
 // RETURN VALUE:
 // none
 //=========================================
-template <typename T>
-MinQueue<T>::MinQueue(void)
-{
+template <typename T> MinQueue<T>::MinQueue(void) {
   size = 0;
   capacity = DEFAULT_LIST_SIZE;
   list = new T[capacity];
@@ -38,8 +36,7 @@ MinQueue<T>::MinQueue(void)
 // RETURN VALUE:
 // none
 //=========================================
-template <typename T>
-MinQueue<T>::~MinQueue(void) { delete[] list; }
+template <typename T> MinQueue<T>::~MinQueue(void) { delete[] list; }
 
 //=========================================
 // to_string
@@ -49,34 +46,32 @@ MinQueue<T>::~MinQueue(void) { delete[] list; }
 // RETURN VALUE:
 // a string s
 //=========================================
-template <typename T>
-string MinQueue<T>::to_string(void) const
-{
+template <typename T> string MinQueue<T>::to_string(void) const {
 
   stringstream s;
 
-  for (int i = 0; i < size - 1; i++)
-  {
+  for (int i = 0; i < size - 1; i++) {
     s << list[i] << " ";
   }
-  if (size != 0)
-  {
+  if (size != 0) {
     s << list[size - 1];
   }
   return s.str();
 }
 
-//=========================================
-// MinQueue
-//=========================================
-template <typename T>
-MinQueue<T>::MinQueue(T *A, int n)
-{
+//=================================================
+// MinQueue constructor from existing array
+// Constructs a minqueue from an existing array
+//
+// PARAMETERS:
+//  A: The array to copy from
+//  n: The size of `A`
+//=================================================
+template <typename T> MinQueue<T>::MinQueue(T *A, int n) {
   list = new T[DEFAULT_LIST_SIZE];
   size = n;
 
-  for (int i = 0; i < n; i++)
-  {
+  for (int i = 0; i < n; i++) {
     list[i] = A[i];
   }
 }
@@ -92,15 +87,10 @@ MinQueue<T>::MinQueue(T *A, int n)
 // RETURN VALUE:
 // the value at the specified position
 //=========================================
-template <typename T>
-T &MinQueue<T>::operator[](int position)
-{
-  if (position < size && position >= 0)
-  {
+template <typename T> T &MinQueue<T>::operator[](int position) {
+  if (position < size && position >= 0) {
     return list[position];
-  }
-  else
-  {
+  } else {
     throw runtime_error("Invalid index\n");
   }
 }
@@ -112,10 +102,7 @@ T &MinQueue<T>::operator[](int position)
 // RETURN VALUE:
 //  T
 //=================================================
-template <typename T>
-T MinQueue<T>::min()
-{
-}
+template <typename T> T MinQueue<T>::min() {}
 
 //=================================================
 // extract_min
@@ -124,8 +111,7 @@ T MinQueue<T>::min()
 // RETURN VALUE:
 //  T
 //=================================================
-template <typename T>
-T MinQueue<T>::extract_min() {}
+template <typename T> T MinQueue<T>::extract_min() {}
 
 //=================================================
 // decrease
@@ -136,8 +122,7 @@ T MinQueue<T>::extract_min() {}
 //  i: The index to decrease
 //  k: What to decrease it to
 //=================================================
-template <typename T>
-void decrease(int i, T k) {}
+template <typename T> void decrease(int i, T k) {}
 
 //=================================================
 // min_heapify
@@ -147,15 +132,13 @@ void decrease(int i, T k) {}
 // PARAMETERS:
 //  i: The index of a parent where the left and  right are subtrees
 //=================================================
-template <typename T>
-void min_heapify(int i) {}
+template <typename T> void min_heapify(int i) {}
 
 //=================================================
 // build_heap
 // Arranges the member array into a min_heap
 //=================================================
-template <typename T>
-void build_heap() {}
+template <typename T> void build_heap() {}
 
 //=================================================
 // sort
@@ -164,5 +147,4 @@ void build_heap() {}
 // PARAMETERS:
 //  A: The array to put the sorted elements into
 //=================================================
-template <typename T>
-void sort(T *A) {}
+template <typename T> void sort(T *A) {}

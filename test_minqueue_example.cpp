@@ -11,36 +11,31 @@
 
 using namespace std;
 
-void test_minqueue()
-{
+void test_minqueue() {
 
   int *int_data = new int[10];
-  for (int i = 0; i < 10; i++)
-  {
+  for (int i = 0; i < 10; i++) {
     int_data[i] = 10 - i;
   }
 
-  try
-  {
+  try {
 
     MinQueue<int> empty;
     string mq_str = empty.to_string();
 
-    if (mq_str != "")
-    {
-      cout << "Incorrect result from empty constructor. Expected an" << " empty string but got : " << mq_str << endl;
+    if (mq_str != "") {
+      cout << "Incorrect result from empty constructor. Expected an"
+           << " empty string but got : " << mq_str << endl;
     }
 
     MinQueue<int> mq(int_data, 10);
     mq_str = mq.to_string();
 
-    if (mq_str != "10 9 8 7 6 5 4 3 2 1")
-    {
-      cout << "Incorrect result from empty constructor. Expected 10 9 8 " << "7 6 5 4 3 2 1 but got : " << "`" << mq_str << "`" << endl;
+    if (mq_str != "10 9 8 7 6 5 4 3 2 1") {
+      cout << "Incorrect result from empty constructor. Expected 10 9 8 "
+           << "7 6 5 4 3 2 1 but got : " << "`" << mq_str << "`" << endl;
     }
-  }
-  catch (exception &e)
-  {
+  } catch (exception &e) {
     cerr << "Error creating the priority queue : " << e.what() << endl;
   }
 
@@ -331,17 +326,10 @@ void test_minqueue()
 // }
 
 // use an enum to represent class year
-enum Year
-{
-  SR,
-  JR,
-  SO,
-  FR
-};
+enum Year { SR, JR, SO, FR };
 
 // define a struct representing a student record
-struct StudentRecord
-{
+struct StudentRecord {
   string name;
   Year year;
   // set registration time to the current time when the student record is
@@ -350,55 +338,47 @@ struct StudentRecord
       std::chrono::system_clock::now();
 
   // overload < operator to compare students based on year and registration time
-  bool operator<(const StudentRecord &other) const
-  {
+  bool operator<(const StudentRecord &other) const {
     return (year < other.year) ||
            (year == other.year && registration_time < other.registration_time);
   }
 
   // overload > operator to compare students based on year and registration time
-  bool operator>(const StudentRecord &other) const
-  {
+  bool operator>(const StudentRecord &other) const {
     return (year > other.year) ||
            (year == other.year && registration_time > other.registration_time);
   }
 
   // overload == operator to compare students based on year and registration
   // time
-  bool operator==(const StudentRecord &other) const
-  {
+  bool operator==(const StudentRecord &other) const {
     return (year == other.year && registration_time == other.registration_time);
   }
 
   // overload != operator to compare students based on year and registration
   // time
-  bool operator!=(const StudentRecord &other) const
-  {
+  bool operator!=(const StudentRecord &other) const {
     return (year != other.year || registration_time != other.registration_time);
   }
 
   // overload <= operator to compare students based on year and registration
   // time
-  bool operator<=(const StudentRecord &other) const
-  {
+  bool operator<=(const StudentRecord &other) const {
     return (year < other.year) ||
            (year == other.year && registration_time <= other.registration_time);
   }
 
   // overload >= operator to compare students based on year and registration
   // time
-  bool operator>=(const StudentRecord &other) const
-  {
+  bool operator>=(const StudentRecord &other) const {
     return (year > other.year) ||
            (year == other.year && registration_time >= other.registration_time);
   }
 
   // overload << operator to print student record
-  friend ostream &operator<<(ostream &os, const StudentRecord &student)
-  {
+  friend ostream &operator<<(ostream &os, const StudentRecord &student) {
     string year_str;
-    switch (student.year)
-    {
+    switch (student.year) {
     case SR:
       year_str = "Senior";
       break;
@@ -491,8 +471,7 @@ struct StudentRecord
 //     total << endl;
 // }
 
-int main()
-{
+int main() {
 
   test_minqueue();
   // test_insert();

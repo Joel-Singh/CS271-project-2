@@ -31,7 +31,7 @@ public:
   void build_heap();
   void sort(T *A);
   std::string to_string() const;
-  T& operator[] ( int position );
+  T &operator[](int position);
 
 private:
   int size;
