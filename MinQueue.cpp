@@ -50,10 +50,12 @@ template <typename T> string MinQueue<T>::to_string(void) const {
 
   stringstream s;
 
-  for (int i = 0; i < size; i++) {
-    s << " " << list[i];
+    for (int i = 0; i < size-1; i++) {
+      s << list[i] << " ";
+    }
+  if (size != 0) {
+    s << list[size-1];
   }
-
   return s.str();
 }
 
