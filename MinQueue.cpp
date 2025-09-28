@@ -46,9 +46,9 @@ template <typename T> MinQueue<T>::~MinQueue(void) { delete[] list; }
 // RETURN VALUE:
 // a string s
 //=========================================
-template <typename T> std::string MinQueue<T>::to_string(void) const {
+template <typename T> string MinQueue<T>::to_string(void) const {
 
-  std::stringstream s;
+  stringstream s;
 
   for (int i = 0; i < size; i++) {
     s << " " << list[i];
