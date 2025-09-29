@@ -207,29 +207,29 @@ void test_heapify() {
 
   try {
 
-    // {
-    //   MinQueue<int> mq;
-    //   mq.min_heapify(1);
-    //
-    //   test("Heapify on empty MinQueue", mq, "");
-    // }
-    //
-    // {
-    //   int *data = new int[1];
-    //   data[0] = 5;
-    //   MinQueue<int> mq(data, 1);
-    //   mq.min_heapify(1);
-    //   test("Heapify on single element MinQueue", mq, "5");
-    // }
-    //
-    // {
-    //   int *data = new int[2];
-    //   data[0] = 0;
-    //   data[1] = 3;
-    //   MinQueue<int> mq(data, 2);
-    //   mq.min_heapify(2);
-    //   test("Heapify on two elements MinQueue already in a heap", mq, "0 3");
-    // }
+    {
+      MinQueue<int> mq;
+      mq.min_heapify(1);
+
+      test("Heapify on empty MinQueue", mq, "");
+    }
+
+    {
+      int *data = new int[1];
+      data[0] = 5;
+      MinQueue<int> mq(data, 1);
+      mq.min_heapify(1);
+      test("Heapify on single element MinQueue", mq, "5");
+    }
+
+    {
+      int *data = new int[2];
+      data[0] = 0;
+      data[1] = 3;
+      MinQueue<int> mq(data, 2);
+      mq.min_heapify(2);
+      test("Heapify on two elements MinQueue already in a heap", mq, "0 3");
+    }
 
     {
       int *data = new int[2];
@@ -240,13 +240,41 @@ void test_heapify() {
       test("Heapify on two elements MinQueue not already in a heap", mq, "1 2");
     }
 
-    // {
-    //   MinQueue<int> mq(int_data, 10);
-    //   mq.set(1, 11);
-    //   mq.min_heapify(1);
-    //
-    //   test("Heapify on non-empty MinQueue", mq, "1 3 4 7 6 5 8 10 11 9");
-    // }
+    {
+      int count = 3;
+      int *data = new int[count];
+      data[0] = 2;
+      data[1] = 1;
+      data[2] = 0;
+      MinQueue<int> mq(data, count);
+      mq.min_heapify(0);
+      test("Heapify on three elements MinQueue not already in a heap", mq,
+           "0 1 2");
+    }
+
+    {
+      int count = 4;
+      int *data = new int[count];
+      data[0] = 2;
+      data[1] = 0;
+      data[2] = 1;
+      data[3] = 0;
+      MinQueue<int> mq(data, count);
+      mq.min_heapify(0);
+      test("Heapify on three elements MinQueue not already in a heap", mq,
+           "0 0 1 2");
+    }
+
+    {
+      MinQueue<int> mq(int_data, 10);
+
+      mq.set(1, 11);
+
+      mq.min_heapify(1);
+
+      // Not heap by itself but the subheap at index 1 is
+      test("Heapify on non-empty MinQueue", mq, "10 6 8 7 1 5 4 3 2 11");
+    }
   } catch (exception &e) {
     cerr << "Error in heapify : " << e.what() << endl;
   }
