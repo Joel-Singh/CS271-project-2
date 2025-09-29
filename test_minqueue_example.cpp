@@ -266,43 +266,47 @@ void test_heapify() {
   delete[] empty_data;
   delete[] int_data;
 }
-//
-// void test_build_min_heap()
-// {
-//
-//     int *int_data = new int[10];
-//     for (int i = 0; i < 10; i++)
-//     {
-//         int_data[i] = 10 - i;
-//     }
-//
-//     try
-//     {
-//
-//         MinQueue<int> mq;
-//         mq.allocate(10);
-//         for (int i = 0; i < 10; i++)
-//         {
-//             mq.set(i, int_data[i]);
-//         }
-//         string o_mq_str = mq.to_string();
-//
-//         mq.build_heap();
-//         string mq_str = mq.to_string();
-//
-//         if (mq_str != "1 2 4 3 6 5 8 10 7 9")
-//         {
-//             cout << "Incorrect build_heap result from " << o_mq_str << ".
-//             Expected 1 2 4 3 6 5 8 10 7 9 but got : " << mq_str << endl;
-//         }
-//     }
-//     catch (exception &e)
-//     {
-//         cerr << "Error in building min heap : " << e.what() << endl;
-//     }
-//
-//     delete[] int_data;
-// }
+
+void test_build_min_heap() {
+
+  int *int_data = new int[10];
+  for (int i = 0; i < 10; i++) {
+    int_data[i] = 10 - i;
+  }
+
+  {
+    MinQueue<int> mq;
+    mq.build_heap();
+    test("Build heap on empty MinQueue ", mq, "");
+  }
+
+  {
+    MinQueue<int> mq(int_data, 1);
+    mq.build_heap();
+    test("Build heap on single element MinQueue ", mq, "10");
+  }
+
+  {
+    MinQueue<int> mq(int_data, 2);
+    mq.build_heap();
+    test("Build heap on two element MinQueue ", mq, "9 10");
+  }
+
+  {
+
+    MinQueue<int> mq(int_data, 10);
+    // mq.allocate(10);
+    // for (int i = 0; i < 10; i++) {
+    //   mq.set(i, int_data[i]);
+    // }
+
+    mq.build_heap();
+
+    test("Building a heap on MinQueue", mq, "1 2 4 3 6 5 8 10 7 9");
+  }
+
+  delete[] int_data;
+}
 //
 // void test_heapsort()
 // {
@@ -500,7 +504,7 @@ int main() {
   test_extract_min();
   // test_decrease_key();
   test_heapify();
-  // test_build_min_heap();
+  test_build_min_heap();
   // test_heapsort();
   //
   // test_application_waitlist();

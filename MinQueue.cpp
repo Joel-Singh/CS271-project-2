@@ -199,7 +199,7 @@ template <typename T> void MinQueue<T>::swap(int i, int k) {
 // Arranges the member array into a min_heap
 //=================================================
 template <typename T> void MinQueue<T>::build_heap() {
-  for (int i = size / 2; i > 0; i--) {
+  for (int i = size / 2; i >= 0; i--) {
     min_heapify(i);
   }
 }
@@ -222,6 +222,8 @@ template <typename T> void sort(T *A) {}
 //  k: the new value
 //=================================================
 template <typename T> void MinQueue<T>::set(int i, T k) {
+  std::cout << "i: " << (i) << std::endl;
+  std::cout << "size: " << (size) << std::endl;
   assert(i >= 0);
   assert(i < size);
 

@@ -31,6 +31,7 @@ public:
   void build_heap();
   void sort(T *A);
   void set(int i, T k);
+  void allocate(int n);
   std::string to_string() const;
   T &operator[](int position);
 
