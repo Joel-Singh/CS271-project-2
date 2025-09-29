@@ -103,7 +103,13 @@ template <typename T> T &MinQueue<T>::operator[](int position) {
 // RETURN VALUE:
 //  T
 //=================================================
-template <typename T> T MinQueue<T>::min() {}
+template <typename T> T MinQueue<T>::min() {
+  if (size == 0) {
+    throw runtime_error("Priority Queue is empty\n");
+  } else {
+    return list[0];
+  }
+}
 
 //=================================================
 // extract_min
@@ -112,7 +118,20 @@ template <typename T> T MinQueue<T>::min() {}
 // RETURN VALUE:
 //  T
 //=================================================
-template <typename T> T MinQueue<T>::extract_min() {}
+template <typename T> T MinQueue<T>::extract_min() {
+  if (size == 0) {
+    throw runtime_error("Priority Queue is empty\n");
+  } else {
+    T minimum = list[0];
+    for (int i = 0; i < size; i++) {
+      list[i] = list[i+1];
+    } 
+    size--;
+    T newMinimum = list[0];
+    cout << "Removed: " << minimum << ", new min: " << newMinimum << endl;
+    return minimum;
+  }
+}
 
 //=================================================
 // decrease
