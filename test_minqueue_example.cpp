@@ -494,12 +494,12 @@ struct StudentRecord {
 
 int main() {
 
-  // test_minqueue();
+  test_minqueue();
   // test_insert();
   test_min();
   test_extract_min();
   // test_decrease_key();
-  // test_heapify();
+  test_heapify();
   // test_build_min_heap();
   // test_heapsort();
   //
