@@ -199,7 +199,7 @@ template <typename T> void MinQueue<T>::swap(int i, int k) {
 // Arranges the member array into a min_heap
 //=================================================
 template <typename T> void MinQueue<T>::build_heap() {
-  for (int i = (size / 2)-1; i >= 0; i--) {
+  for (int i = (size / 2) - 1; i >= 0; i--) {
     min_heapify(i);
   }
 }
