@@ -124,8 +124,8 @@ template <typename T> T MinQueue<T>::extract_min() {
   } else {
     T minimum = list[0];
     for (int i = 0; i < size; i++) {
-      list[i] = list[i+1];
-    } 
+      list[i] = list[i + 1];
+    }
     size--;
     T newMinimum = list[0];
     cout << "Removed: " << minimum << ", new min: " << newMinimum << endl;

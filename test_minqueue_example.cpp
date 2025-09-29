@@ -85,85 +85,69 @@ void test_minqueue() {
 //     delete[] int_data;
 // }
 //
-void test_min()
-{
+void test_min() {
 
-    int *int_data = new int[10];
-    for (int i = 0; i < 10; i++)
-    {
-        int_data[i] = i+1;
-    }
+  int *int_data = new int[10];
+  for (int i = 0; i < 10; i++) {
+    int_data[i] = i + 1;
+  }
 
-    try{
-        MinQueue<int> empty;
-        int min = empty.min();
-        string mq_str = empty.to_string();
-        cout << "Incorrectly returned min from empty queue: " << min << endl;
-    }
-    catch (exception &e)
-    {
-        // expect an underflow error
-        cout << "Correctly caught error trying to get min from empty queue: "
-        << e.what() << endl;
-    }
+  try {
+    MinQueue<int> empty;
+    int min = empty.min();
+    string mq_str = empty.to_string();
+    cout << "Incorrectly returned min from empty queue: " << min << endl;
+  } catch (exception &e) {
+    // expect an underflow error
+    cout << "Correctly caught error trying to get min from empty queue: "
+         << e.what() << endl;
+  }
 
-    try
-    {
-        MinQueue<int> mq(int_data, 10);
-        int min = mq.min();
-        test("Calling min on minQueue", min, "1");
-    }
-    catch (exception &e)
-    {
-        cerr << "Error in determining min of the priority queue : " <<
-        e.what() << endl;
-    }
+  try {
+    MinQueue<int> mq(int_data, 10);
+    int min = mq.min();
+    test("Calling min on minQueue", min, "1");
+  } catch (exception &e) {
+    cerr << "Error in determining min of the priority queue : " << e.what()
+         << endl;
+  }
 
-    delete[] int_data;
+  delete[] int_data;
 }
 
-void test_extract_min()
-{
+void test_extract_min() {
 
-    int *int_data = new int[10];
-    for (int i = 0; i < 10; i++)
-    {
-        int_data[i] = i+1;
-    }
+  int *int_data = new int[10];
+  for (int i = 0; i < 10; i++) {
+    int_data[i] = i + 1;
+  }
 
-    try{
-        MinQueue<int> empty;
-        int min = empty.extract_min();
-        string mq_str = empty.to_string();
-        cout << "Incorrectly extracted min from empty queue: " << min <<
-        endl;
-    }
-    catch (exception &e)
-    {
-        // expect an underflow error
-        cout << "Correctly caught error trying to extract min from empty" <<
-        " queue: " << e.what() << endl;
-    }
-    try
-    {
-        MinQueue<int> mq(int_data, 10);
-        int min = mq.extract_min();
-        string mq_str = mq.to_string();
+  try {
+    MinQueue<int> empty;
+    int min = empty.extract_min();
+    string mq_str = empty.to_string();
+    cout << "Incorrectly extracted min from empty queue: " << min << endl;
+  } catch (exception &e) {
+    // expect an underflow error
+    cout << "Correctly caught error trying to extract min from empty"
+         << " queue: " << e.what() << endl;
+  }
+  try {
+    MinQueue<int> mq(int_data, 10);
+    int min = mq.extract_min();
+    string mq_str = mq.to_string();
 
-        if (min != 1 || mq_str != "2 3 4 5 6 7 8 9 10")
-        {
-            cout << "Incorrect extract min result. Expected 0 and the queue " <<
-            "2 3 4 5 6 7 8 9 10 but got : " << min << " and a queue of : " <<
-            mq_str << endl;
-        }
+    if (min != 1 || mq_str != "2 3 4 5 6 7 8 9 10") {
+      cout << "Incorrect extract min result. Expected 0 and the queue "
+           << "2 3 4 5 6 7 8 9 10 but got : " << min
+           << " and a queue of : " << mq_str << endl;
     }
-    catch (exception &e)
-    {
-        cerr << "Error in determining min of the priority queue : " <<
-        e.what() << endl;
-    }
+  } catch (exception &e) {
+    cerr << "Error in determining min of the priority queue : " << e.what()
+         << endl;
+  }
 
-    delete[] int_data;
+  delete[] int_data;
 }
 
 // void test_decrease_key()
