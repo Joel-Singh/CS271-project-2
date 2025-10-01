@@ -227,6 +227,10 @@ template <typename T> void MinQueue<T>::set(int i, T k) {
   assert(i >= 0);
   assert(i < size);
 
+  if (i >= size) {
+    allocate(i+1);
+  }
+
   list[i] = k;
 }
 
