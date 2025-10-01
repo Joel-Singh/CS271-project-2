@@ -32,9 +32,9 @@ void test_minqueue() {
     MinQueue<int> mq(int_data, 10);
     mq_str = mq.to_string();
 
-    if (mq_str != "10 9 8 7 6 5 4 3 2 1") {
-      cout << "Incorrect result from empty constructor. Expected 10 9 8 "
-           << "7 6 5 4 3 2 1 but got : " << "`" << mq_str << "`" << endl;
+    if (mq_str != "1 2 4 3 6 5 8 10 7 9") {
+      cout << "Incorrect result from empty constructor. Expected 1 2 4 "
+           << "3 6 5 8 10 7 9 but got : " << "`" << mq_str << "`" << endl;
     }
   } catch (exception &e) {
     cerr << "Error creating the priority queue : " << e.what() << endl;
@@ -89,7 +89,7 @@ void test_min() {
 
   int *int_data = new int[10];
   for (int i = 0; i < 10; i++) {
-    int_data[i] = i + 1;
+    int_data[i] = 10 - i;
   }
 
   try {
@@ -119,7 +119,7 @@ void test_extract_min() {
 
   int *int_data = new int[10];
   for (int i = 0; i < 10; i++) {
-    int_data[i] = i + 1;
+    int_data[i] = 10 - i;
   }
 
   try {
@@ -256,8 +256,7 @@ void test_heapify() {
 
       mq.min_heapify(1);
 
-      // Not heap by itself but the subheap at index 1 is
-      test("Heapify on non-empty MinQueue", mq, "10 6 8 7 1 5 4 3 2 11");
+      test("Heapify on non-empty MinQueue", mq, "1 3 4 7 6 5 8 10 11 9");
     }
   } catch (exception &e) {
     cerr << "Error in heapify : " << e.what() << endl;
@@ -267,6 +266,8 @@ void test_heapify() {
   delete[] int_data;
 }
 
+// TODO need to modify the build min heap tests to use allocate and set intsead
+// of constructors
 void test_build_min_heap() {
 
   int *int_data = new int[10];
@@ -295,10 +296,10 @@ void test_build_min_heap() {
   {
 
     MinQueue<int> mq(int_data, 10);
-    // mq.allocate(10);
-    // for (int i = 0; i < 10; i++) {
-    //   mq.set(i, int_data[i]);
-    // }
+    mq.allocate(10);
+    for (int i = 0; i < 10; i++) {
+      mq.set(i, int_data[i]);
+    }
 
     mq.build_heap();
 
