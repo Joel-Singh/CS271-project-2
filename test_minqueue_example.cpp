@@ -282,25 +282,35 @@ void test_build_min_heap() {
   }
 
   {
-    MinQueue<int> mq(int_data, 1);
+    MinQueue<int> mq;
+    int size = 1;
+    mq.allocate(size);
+    for (int i = 0; i < size; i++) {
+      mq.set(i, int_data[i]);
+    }
     mq.build_heap();
     test("Build heap on single element MinQueue ", mq, "10");
   }
 
   {
-    MinQueue<int> mq(int_data, 2);
+    MinQueue<int> mq;
+    int size = 2;
+    mq.allocate(size);
+    for (int i = 0; i < size; i++) {
+      mq.set(i, int_data[i]);
+    }
     mq.build_heap();
     test("Build heap on two element MinQueue ", mq, "9 10");
   }
 
   {
 
-    MinQueue<int> mq(int_data, 10);
-    mq.allocate(10);
-    for (int i = 0; i < 10; i++) {
+    MinQueue<int> mq;
+    int size = 10;
+    mq.allocate(size);
+    for (int i = 0; i < size; i++) {
       mq.set(i, int_data[i]);
     }
-
     mq.build_heap();
 
     test("Building a heap on MinQueue", mq, "1 2 4 3 6 5 8 10 7 9");
