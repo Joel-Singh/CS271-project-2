@@ -122,13 +122,10 @@ template <typename T> T MinQueue<T>::extract_min() {
   if (size == 0) {
     throw runtime_error("Priority Queue is empty\n");
   } else {
-    T minimum = list[0];
-    for (int i = 0; i < size; i++) {
-      list[i] = list[i + 1];
-    }
+    T minimum = min();
+    list[0] = list[size-1];
     size--;
-    T newMinimum = list[0];
-    cout << "Removed: " << minimum << ", new min: " << newMinimum << endl;
+    min_heapify(1);
     return minimum;
   }
 }
@@ -169,6 +166,7 @@ template <typename T> void MinQueue<T>::min_heapify(int i) {
     smallest = r;
   }
 
+  cout << "swapping " << i << " and " << smallest << endl;
   if (smallest != i) {
     swap(i, smallest);
     min_heapify(smallest);
