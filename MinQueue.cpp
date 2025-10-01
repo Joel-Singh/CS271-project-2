@@ -23,8 +23,7 @@ using namespace std;
 //=========================================
 template <typename T> MinQueue<T>::MinQueue(void) {
   size = 0;
-  capacity = DEFAULT_LIST_SIZE;
-  list = new T[capacity];
+  list = new T[size];
 }
 
 //=========================================
@@ -69,12 +68,13 @@ template <typename T> string MinQueue<T>::to_string(void) const {
 //  n: The size of `A`
 //=================================================
 template <typename T> MinQueue<T>::MinQueue(T *A, int n) {
-  list = new T[DEFAULT_LIST_SIZE];
+  list = new T[n];
   size = n;
 
   for (int i = 0; i < n; i++) {
     list[i] = A[i];
   }
+  build_heap();
 }
 
 //=========================================
@@ -142,7 +142,9 @@ template <typename T> T MinQueue<T>::extract_min() {
 //  i: The index to decrease
 //  k: What to decrease it to
 //=================================================
-template <typename T> void decrease(int i, T k) {}
+template <typename T> void decrease(int i, T k) {
+  
+}
 
 //=================================================
 // min_heapify
@@ -228,4 +230,13 @@ template <typename T> void MinQueue<T>::set(int i, T k) {
   assert(i < size);
 
   list[i] = k;
+}
+
+//=================================================
+// reallocate
+//=================================================
+template <typename T> void MinQueue::allocate(int i) {
+  if (size == i) {
+    
+  }
 }

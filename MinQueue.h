@@ -16,8 +16,6 @@
 
 using namespace std;
 
-int DEFAULT_LIST_SIZE = 10;
-
 template <class T> class MinQueue {
 public:
   MinQueue();
@@ -39,7 +37,6 @@ private:
   int size;
   T *list;
   void swap(int i, int k);
-  int capacity;
   int left(int i);
   int right(int i);
 };
