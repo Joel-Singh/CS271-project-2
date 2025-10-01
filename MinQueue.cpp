@@ -224,8 +224,6 @@ template <typename T> void sort(T *A) {}
 //  k: the new value
 //=================================================
 template <typename T> void MinQueue<T>::set(int i, T k) {
-  std::cout << "i: " << (i) << std::endl;
-  std::cout << "size: " << (size) << std::endl;
   assert(i >= 0);
   assert(i < size);
 
