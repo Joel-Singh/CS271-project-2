@@ -123,7 +123,7 @@ template <typename T> T MinQueue<T>::extract_min() {
     throw runtime_error("Priority Queue is empty\n");
   } else {
     T minimum = min();
-    list[0] = list[size-1];
+    list[0] = list[size - 1];
     size--;
     min_heapify(1);
     return minimum;
@@ -139,9 +139,7 @@ template <typename T> T MinQueue<T>::extract_min() {
 //  i: The index to decrease
 //  k: What to decrease it to
 //=================================================
-template <typename T> void decrease(int i, T k) {
-  
-}
+template <typename T> void decrease(int i, T k) {}
 
 //=================================================
 // min_heapify
@@ -166,7 +164,6 @@ template <typename T> void MinQueue<T>::min_heapify(int i) {
     smallest = r;
   }
 
-  cout << "swapping " << i << " and " << smallest << endl;
   if (smallest != i) {
     swap(i, smallest);
     min_heapify(smallest);
@@ -226,7 +223,7 @@ template <typename T> void MinQueue<T>::set(int i, T k) {
   assert(i < size);
 
   if (i >= size) {
-    allocate(i+1);
+    allocate(i + 1);
   }
 
   list[i] = k;
@@ -239,7 +236,7 @@ template <typename T> void MinQueue<T>::allocate(int n) {
   if (this->size < n) {
     this->size = n;
 
-    T* newList = new T[this->size];
+    T *newList = new T[this->size];
     for (int i = 0; i < n; i++) {
       newList[i] = list[i];
     }

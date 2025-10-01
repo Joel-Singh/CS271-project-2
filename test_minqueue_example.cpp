@@ -9,7 +9,6 @@
 #include <chrono>
 #include <iostream>
 #include <stdexcept>
-#include <cassert>
 
 using namespace std;
 
@@ -135,12 +134,10 @@ void test_extract_min() {
   }
   try {
     MinQueue<int> mq(int_data, 10);
-    assert(mq.to_string(), "1 2 4 3 6 5 8 10 7 9");
     int min = mq.extract_min();
 
     test("Correct min extracted", min, "1");
     test("Is heap after min extraction", mq, "2 3 4 7 6 5 8 10 9");
-  
   } catch (exception &e) {
     cerr << "Error in determining min of the priority queue : " << e.what()
          << endl;
