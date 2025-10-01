@@ -125,7 +125,7 @@ template <typename T> T MinQueue<T>::extract_min() {
     T minimum = min();
     list[0] = list[size - 1];
     size--;
-    min_heapify(1);
+    min_heapify(0);
     return minimum;
   }
 }
