@@ -22,11 +22,20 @@ void test_minqueue() {
   try {
 
     MinQueue<int> empty;
-    test("Empty minqueue is empty", empty, "");
+    string mq_str = empty.to_string();
+
+    if (mq_str != "") {
+      cout << "Incorrect result from empty constructor. Expected an"
+           << " empty string but got : " << mq_str << endl;
+    }
 
     MinQueue<int> mq(int_data, 10);
+    mq_str = mq.to_string();
 
-    test("Minqueue is heap on constructor", mq, "1 2 4 3 6 5 8 10 7 9");
+    if (mq_str != "1 2 4 3 6 5 8 10 7 9") {
+      cout << "Incorrect result from empty constructor. Expected 1 2 4 "
+           << "3 6 5 8 10 7 9 but got : " << "`" << mq_str << "`" << endl;
+    }
   } catch (exception &e) {
     cerr << "Error creating the priority queue : " << e.what() << endl;
   }
@@ -261,6 +270,8 @@ void test_heapify() {
   delete[] int_data;
 }
 
+// TODO need to modify the build min heap tests to use allocate and set intsead
+// of constructors
 void test_build_min_heap() {
 
   int *int_data = new int[10];
@@ -503,7 +514,7 @@ struct StudentRecord {
 int main() {
 
   test_minqueue();
-  // test_insert();
+  test_insert();
   test_min();
   test_extract_min();
   test_decrease_key();
