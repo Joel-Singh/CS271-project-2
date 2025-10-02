@@ -13,13 +13,9 @@
 using namespace std;
 
 //=========================================
-// Constructor
+// Empty Constructor
 // Initializes a list the ability to hold
 // ten items but has nothing in it.
-// PARAMETERS:
-// none
-// RETURN VALUE:
-// none
 //=========================================
 template <typename T> MinQueue<T>::MinQueue(void) {
   size = 0;
@@ -27,24 +23,19 @@ template <typename T> MinQueue<T>::MinQueue(void) {
 }
 
 //=========================================
-// destructor
+// Destructor
 // This deletes the dynamically-allocated
 // memory that it created for this function
 // to prevent memory leaks
-// PARAMETERS:
-// none
-// RETURN VALUE:
-// none
 //=========================================
 template <typename T> MinQueue<T>::~MinQueue(void) { delete[] list; }
 
 //=========================================
 // to_string
-// This converts our output to a string
-// PARAMETERS:
-// none
+// Returns a string representation of the MinQueue
+//
 // RETURN VALUE:
-// a string s
+// string
 //=========================================
 template <typename T> string MinQueue<T>::to_string(void) const {
 
@@ -60,8 +51,8 @@ template <typename T> string MinQueue<T>::to_string(void) const {
 }
 
 //=================================================
-// MinQueue constructor from existing array
-// Constructs a minqueue from an existing array
+// constructor from existing array
+// Constructs a MinQueue from an existing array
 //
 // PARAMETERS:
 //  A: The array to copy from
@@ -81,10 +72,12 @@ template <typename T> MinQueue<T>::MinQueue(T *A, int n) {
 // operator[]
 // This accesses and returns a value at a
 // specified position. Valid indices are 0
-// to size-1. Invalid indices generate a
+// to `size`-1. Invalid indices generate a
 // run-time error and end the program.
+//
 // PARAMETERS:
 // a specified position
+//
 // RETURN VALUE:
 // the value at the specified position
 //=========================================
@@ -98,10 +91,10 @@ template <typename T> T &MinQueue<T>::operator[](int position) {
 
 //=================================================
 // min
-// Returns the minimum from the MinQueue
+// Returns the minimum
 //
 // RETURN VALUE:
-//  T
+//  the minimum T
 //=================================================
 template <typename T> T MinQueue<T>::min() {
   if (size == 0) {
@@ -113,10 +106,10 @@ template <typename T> T MinQueue<T>::min() {
 
 //=================================================
 // extract_min
-// Returns and removes the minimum from the MinQueue
+// Returns and removes the minimum
 //
 // RETURN VALUE:
-//  T
+//  the minimum T
 //=================================================
 template <typename T> T MinQueue<T>::extract_min() {
   if (size == 0) {
@@ -132,8 +125,8 @@ template <typename T> T MinQueue<T>::extract_min() {
 
 //=================================================
 // decrease
-// Sets the element at index i to k with the assumption k is less than the
-// element at i
+// Sets the element at index `i` to `k` with the assumption `k` is less than the
+// element at `i`
 //
 // PARAMETERS:
 //  i: The index to decrease
@@ -155,10 +148,10 @@ template <typename T> void MinQueue<T>::decrease_key(int i, T k) {
 //=================================================
 // min_heapify
 // precondition: The left and right are subtrees
-// postcondition: the subheap at i will be a minheap
+// postcondition: the subheap at `i` will be a minheap
 //
 // PARAMETERS:
-//  i: The index of a parent where the left and  right are subtrees
+// i: The index of a parent where the left and right are subtrees
 //=================================================
 template <typename T> void MinQueue<T>::min_heapify(int i) {
   int l = left(i);
@@ -183,16 +176,35 @@ template <typename T> void MinQueue<T>::min_heapify(int i) {
 
 //=================================================
 // left
+// Returns the index of the left node for `i`
+//
+// PARAMETERS:
+//  i: The node to get the left for
+//
+// RETURN VALUE:
+//  The left child's node index
 //=================================================
 template <typename T> int MinQueue<T>::left(int i) { return 2 * i + 1; }
 
 //=================================================
 // right
+// Returns the index of the right node for `i`
+//
+// PARAMETERS:
+//  i: The node to get the right for
+//
+// RETURN VALUE:
+//  The right child's node index
 //=================================================
 template <typename T> int MinQueue<T>::right(int i) { return 2 * i + 2; }
 
 //=================================================
 // swap
+// Swaps the values of two nodes at `i` and `k`
+//
+// PARAMETERS:
+//  i: Node being swapped
+//  k: Node being swapped
 //=================================================
 template <typename T> void MinQueue<T>::swap(int i, int k) {
   int copy;
@@ -204,7 +216,7 @@ template <typename T> void MinQueue<T>::swap(int i, int k) {
 
 //=================================================
 // build_heap
-// Arranges the member array into a min_heap
+// Arranges the member array, `list`, into a min_heap
 //=================================================
 template <typename T> void MinQueue<T>::build_heap() {
   for (int i = (size / 2) - 1; i >= 0; i--) {
@@ -242,6 +254,10 @@ template <typename T> void MinQueue<T>::set(int i, T k) {
 
 //=================================================
 // allocate
+// Ensures the list is of atleast size n.
+//
+// PARAMETERS:
+//  n: The minimum needed size
 //=================================================
 template <typename T> void MinQueue<T>::allocate(int n) {
   if (this->size < n) {
