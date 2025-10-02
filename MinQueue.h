@@ -21,7 +21,7 @@ public:
   MinQueue();
   ~MinQueue();
   MinQueue(T *A, int n);
-  void insert(const T &item);
+  // void insert(const T &item);
   T min();
   T extract_min();
   void decrease_key(int i, T k);

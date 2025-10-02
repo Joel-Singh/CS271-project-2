@@ -124,7 +124,7 @@ template <typename T> T MinQueue<T>::extract_min() {
 }
 
 //=================================================
-// decrease_key
+// decrease
 // Sets the element at index `i` to `k` with the assumption `k` is less than the
 // element at `i`
 //
