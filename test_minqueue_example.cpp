@@ -438,35 +438,33 @@ struct StudentRecord {
   }
 };
 
-void test_application_waitlist()
-{
-    // create a minqueue of students
-    MinQueue<StudentRecord> waitlist;
-    waitlist.insert({"Alice", SR});
-    // waitlist.insert({"Bob", JR});
-    // waitlist.insert({"Charlie", SO});
-    // waitlist.insert({"David", FR});
-    // waitlist.insert({"Eve", SR});
-    // waitlist.insert({"Frank", JR});
-    // waitlist.insert({"Grace", SO});
-    // waitlist.insert({"Heidi", FR});
-    // waitlist.insert({"Ivan", SR});
-    // waitlist.insert({"Judy", JR});
-    // waitlist.insert({"Mallory", SO});
-    // waitlist.insert({"Niaj", FR});
-    // waitlist.insert({"Olivia", SR});
-    // waitlist.insert({"Peggy", JR});
+void test_application_waitlist() {
+  // create a minqueue of students
+  MinQueue<StudentRecord> waitlist;
+  waitlist.insert({"Alice", SR});
+  // waitlist.insert({"Bob", JR});
+  // waitlist.insert({"Charlie", SO});
+  // waitlist.insert({"David", FR});
+  // waitlist.insert({"Eve", SR});
+  // waitlist.insert({"Frank", JR});
+  // waitlist.insert({"Grace", SO});
+  // waitlist.insert({"Heidi", FR});
+  // waitlist.insert({"Ivan", SR});
+  // waitlist.insert({"Judy", JR});
+  // waitlist.insert({"Mallory", SO});
+  // waitlist.insert({"Niaj", FR});
+  // waitlist.insert({"Olivia", SR});
+  // waitlist.insert({"Peggy", JR});
 
-    // // process the waitlist and print the order in which students are
-    // registered cout << "Registration order:" << endl;
+  // // process the waitlist and print the order in which students are
+  // registered cout << "Registration order:" << endl;
 
-    // // assume there are only 10 spots available
-    // for (int i = 0; i < 10; i++)
-    // {
-    //     StudentRecord student = waitlist.extract_min();
-    //     cout << student << endl;
-    // }
-
+  // // assume there are only 10 spots available
+  // for (int i = 0; i < 10; i++)
+  // {
+  //     StudentRecord student = waitlist.extract_min();
+  //     cout << student << endl;
+  // }
 }
 
 //
