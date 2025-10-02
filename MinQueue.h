@@ -36,6 +36,7 @@ public:
 
 private:
   int size;
+  int capacity;
   T *list;
   void swap(int i, int k);
   int left(int i);

@@ -19,7 +19,8 @@ using namespace std;
 //=========================================
 template <typename T> MinQueue<T>::MinQueue(void) {
   size = 0;
-  list = new T[size];
+  capacity = 0;
+  list = new T[capacity];
 }
 
 //=========================================
@@ -61,6 +62,7 @@ template <typename T> string MinQueue<T>::to_string(void) const {
 template <typename T> MinQueue<T>::MinQueue(T *A, int n) {
   list = new T[n];
   size = n;
+  capacity = n;
 
   for (int i = 0; i < n; i++) {
     list[i] = A[i];
@@ -257,16 +259,24 @@ template <typename T> void MinQueue<T>::set(int i, T k) {
 
 //=================================================
 // allocate
-// Ensures the list is of atleast size n.
+// Ensures the list is of atleast size `n`. If more memory is needed, double the
+// needed memory is allocated to avoid allocations in the future..
 //
 // PARAMETERS:
 //  n: The minimum needed size
 //=================================================
 template <typename T> void MinQueue<T>::allocate(int n) {
-  if (this->size < n) {
-    this->size = n;
+  if (this->size >= n) {
+    return;
+  }
 
-    T *newList = new T[this->size];
+  if (n < capacity) {
+    this->size = n;
+  } else {
+    this->size = n;
+    capacity = n * 2;
+
+    T *newList = new T[capacity];
     for (int i = 0; i < n; i++) {
       newList[i] = list[i];
     }
