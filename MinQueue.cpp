@@ -236,7 +236,21 @@ template <typename T> void MinQueue<T>::build_heap() {
 // PARAMETERS:
 //  A: The array to put the sorted elements into
 //=================================================
-template <typename T> void sort(T *A) {}
+template <typename T> void MinQueue<T>::sort(T *A) {
+  // Don't need to build max heap, all methods aside from allocate and set leave
+  // the member array as a heap.
+  int original_size = size;
+
+  for (int i = 0; i < size; i++) {
+    A[i] = min();
+    swap(0, size - 1);
+    size--;
+    min_heapify(0);
+  }
+
+  size = original_size;
+  build_heap();
+}
 
 //=================================================
 // set

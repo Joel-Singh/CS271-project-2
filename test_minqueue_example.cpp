@@ -304,48 +304,41 @@ void test_build_min_heap() {
 
   delete[] int_data;
 }
-//
-// void test_heapsort()
-// {
-//
-//     int *empty_data = new int[0];
-//
-//     int *int_data = new int[10];
-//     for (int i = 0; i < 10; i++)
-//     {
-//         int_data[i] = 10 - i;
-//     }
-//
-//     try
-//     {
-//
-//         MinQueue<int> empty;
-//         empty.sort(empty_data);
-//
-//         MinQueue<int> heap(int_data, 10);
-//         heap.sort(int_data);
-//
-//         string sorted_str = to_string(int_data[0]);
-//
-//         for (int i = 1; i < 10; i++)
-//         {
-//             sorted_str += (" " + to_string(int_data[i]));
-//         }
-//
-//         if (sorted_str != "1 2 3 4 5 6 7 8 9 10")
-//         {
-//             cout << "Incorrect heapsort result. Expected 1 2 3 4 5 6 7 8 9 10
-//             but got : " << sorted_str << endl;
-//         }
-//     }
-//     catch (exception &e)
-//     {
-//         cerr << "Error in sorting : " << e.what() << endl;
-//     }
-//
-//     delete[] empty_data;
-//     delete[] int_data;
-// }
+
+void test_heapsort() {
+
+  try {
+
+    {
+      int *empty_data = new int[0];
+
+      MinQueue<int> empty;
+      empty.sort(empty_data);
+      test("Empty sorted heap stays empty", empty, "");
+
+      delete[] empty_data;
+    }
+
+    {
+      const int LENGTH = 10;
+      int *int_data = new int[LENGTH];
+      for (int i = 0; i < LENGTH; i++) {
+        int_data[i] = LENGTH - i;
+      }
+
+      MinQueue<int> heap(int_data, LENGTH);
+      heap.sort(int_data);
+
+      test("Heap sort on len 10 mq", array_to_string(int_data, LENGTH),
+           "1 2 3 4 5 6 7 8 9 10");
+
+      delete[] int_data;
+    }
+
+  } catch (exception &e) {
+    cerr << "Error in sorting : " << e.what() << endl;
+  }
+}
 
 // use an enum to represent class year
 enum Year { SR, JR, SO, FR };
@@ -502,7 +495,7 @@ int main() {
   test_decrease_key();
   test_heapify();
   test_build_min_heap();
-  // test_heapsort();
+  test_heapsort();
   //
   // test_application_waitlist();
   //

@@ -38,3 +38,28 @@ void test(std::string description, const T &actual, std::string expected) {
   }
   cout << "------------------------------" << endl;
 }
+
+//=================================================
+// array_to_string
+// Convert an array to a string representation
+//
+// PARAMETERS:
+//  A: Array to convert
+//  len: Length of `A`
+//
+// RETURN VALUE:
+//  string representation of `A`
+//=================================================
+template <typename T> string array_to_string(T *A, int len) {
+  if (len == 0) {
+    return "";
+  } else {
+    string str = to_string(A[0]);
+
+    for (int i = 1; i < len; i++) {
+      str += (" " + to_string(A[i]));
+    }
+
+    return str;
+  }
+}
