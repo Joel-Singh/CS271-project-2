@@ -6,7 +6,7 @@
 // ************************************
 #include "MinQueue.h"
 #include "test.cpp"
-#include <chrono>
+#include "test_minqueue_times.cpp"
 #include <iostream>
 #include <stdexcept>
 
@@ -476,45 +476,6 @@ void test_application_waitlist() {
 }
 
 //
-// void time_test()
-// {
-//     MinQueue<int> mq;
-//     // TO-DO: generate large minqueue
-//     int size = -1; // TO-DO: set size of large minqueue
-//     int total = 0;
-//
-//     int val = rand() % 100000;
-//     auto begin = std::chrono::high_resolution_clock::now();
-//     mq.insert(val);
-//     auto end = std::chrono::high_resolution_clock::now();
-//     auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end -
-//     begin); cout << "insert time test took " << elapsed.count() << "
-//     nanoseconds" << endl; total += elapsed.count();
-//
-//     begin = std::chrono::high_resolution_clock::now();
-//     int _ = mq.min();
-//     end = std::chrono::high_resolution_clock::now();
-//     elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end -
-//     begin); cout << "min time test took " << elapsed.count() << "
-//     nanoseconds" << endl; total += elapsed.count();
-//
-//     begin = std::chrono::high_resolution_clock::now();
-//     _ = mq.extract_min();
-//     end = std::chrono::high_resolution_clock::now();
-//     elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end -
-//     begin); cout << "extract min time test took " << elapsed.count() << "
-//     nanoseconds" << endl; total += elapsed.count();
-//
-//     int last_index = size - 1;  // indexing starts at 0
-//     int new_val = mq.min() - 1; // ensure we're decreasing the key
-//     begin = std::chrono::high_resolution_clock::now();
-//     mq.decrease_key(last_index, new_val);
-//     end = std::chrono::high_resolution_clock::now();
-//     elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end -
-//     begin); cout << "decrease key time test took " << elapsed.count() << "
-//     nanoseconds" << endl; total += elapsed.count(); cout << "Total time: " <<
-//     total << endl;
-// }
 
 int main() {
 
@@ -528,8 +489,8 @@ int main() {
   test_heapsort();
   //
   test_application_waitlist();
-  //
-  // time_test();
+
+  time_test();
 
   cout << "Testing completed" << endl;
 
