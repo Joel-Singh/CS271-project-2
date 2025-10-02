@@ -241,7 +241,7 @@ template <typename T> void MinQueue<T>::sort(T *A) {
   // the member array as a heap.
   int original_size = size;
 
-  for (int i = 0; i < size; i++) {
+  for (int i = 0; i < original_size; i++) {
     A[i] = min();
     swap(0, size - 1);
     size--;
