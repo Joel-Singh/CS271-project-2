@@ -135,7 +135,7 @@ template <typename T> T MinQueue<T>::extract_min() {
 //  k: What to decrease it to
 //=================================================
 template <typename T> void MinQueue<T>::decrease_key(int i, T k) {
-  if (k >= list[i]) {
+  if (k > list[i]) {
     throw runtime_error("New key must be smaller than current key\n");
   }
 
@@ -288,4 +288,10 @@ template <typename T> int MinQueue<T>::parent(int i) {
   assert(i != 0);
   int parent = (i - 1) / 2;
   return parent;
+}
+
+template <typename T> void MinQueue<T>::insert(const T item) {
+  allocate(this->size + 1);
+  set(this->size - 1, item);
+  decrease_key(this->size - 1, item);
 }

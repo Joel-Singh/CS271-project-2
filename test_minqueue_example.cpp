@@ -33,49 +33,42 @@ void test_minqueue() {
 
   delete[] int_data;
 }
-//
-// void test_insert()
-// {
-//
-//     int *int_data = new int[10];
-//     for (int i = 0; i < 10; i++)
-//     {
-//         int_data[i] = 10 - i;
-//     }
-//
-//     try
-//     {
-//
-//         MinQueue<int> empty;
-//         empty.insert(0);
-//         string mq_str = empty.to_string();
-//
-//         if (mq_str != "0")
-//         {
-//             cout << "Incorrect insert result. Epected 0 but got : " << mq_str
-//             << endl;
-//         }
-//
-//         MinQueue<int> mq(int_data, 10);
-//         mq.insert(25);
-//         mq.insert(0);
-//         mq_str = mq.to_string();
-//
-//         if (mq_str != "0 2 1 3 6 4 8 10 7 9 25 5")
-//         {
-//             cout << "Incorrect insert result. Expected 0 2 1 3 6 4 8 10 7 9
-//             25 5 but got : " << mq_str << endl;
-//         }
-//     }
-//     catch (exception &e)
-//     {
-//         cerr << "Error inserting into the priority queue : " << e.what() <<
-//         endl;
-//     }
-//
-//     delete[] int_data;
-// }
-//
+
+void test_insert() {
+
+  int *int_data = new int[10];
+  for (int i = 0; i < 10; i++) {
+    int_data[i] = 10 - i;
+  }
+
+  try {
+    {
+      MinQueue<int> mq;
+      mq.insert(0);
+      test("Insert single element", mq, "0");
+    }
+
+    {
+      MinQueue<int> mq(int_data, 10);
+
+      mq.insert(0);
+      test("Insert one element into len 10 mq", mq, "0 1 4 3 2 5 8 10 7 9 6");
+    }
+
+    {
+      MinQueue<int> mq(int_data, 10);
+      mq.insert(25);
+      mq.insert(0);
+      test("Insert two elements into len 10 mq", mq,
+           "0 2 1 3 6 4 8 10 7 9 25 5");
+    }
+  } catch (exception &e) {
+    cerr << "Error inserting into the priority queue : " << e.what() << endl;
+  }
+
+  delete[] int_data;
+}
+
 void test_min() {
 
   int *int_data = new int[10];
@@ -503,7 +496,7 @@ struct StudentRecord {
 int main() {
 
   test_minqueue();
-  // test_insert();
+  test_insert();
   test_min();
   test_extract_min();
   test_decrease_key();
