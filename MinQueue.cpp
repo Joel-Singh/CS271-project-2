@@ -139,7 +139,18 @@ template <typename T> T MinQueue<T>::extract_min() {
 //  i: The index to decrease
 //  k: What to decrease it to
 //=================================================
-template <typename T> void decrease(int i, T k) {}
+template <typename T> void MinQueue<T>::decrease_key(int i, T k) {
+  if (k >= list[i]) {
+    throw runtime_error("New key must be smaller than current key\n");
+  }
+
+  list[i] = k;
+  while (i > 0 && (list[parent(i)] > list[i])) {
+      swap(parent(i), i);
+      i = parent(i);
+  }
+}
+
 
 //=================================================
 // min_heapify
@@ -243,4 +254,13 @@ template <typename T> void MinQueue<T>::allocate(int n) {
     delete list;
     list = newList;
   }
+}
+
+//=================================================
+// parent
+//=================================================
+template <typename T> int MinQueue<T>::parent(int i) {
+  assert(i != 0);
+  int parent = (i-1)/2;
+  return parent;
 }

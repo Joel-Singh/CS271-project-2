@@ -146,36 +146,44 @@ void test_extract_min() {
   delete[] int_data;
 }
 
-// void test_decrease_key()
-// {
-//
-//     int *int_data = new int[10];
-//     for (int i = 0; i < 10; i++)
-//     {
-//         int_data[i] = 10 - i;
-//     }
-//
-//     try
-//     {
-//         MinQueue<int> mq(int_data, 10);
-//         mq.decrease_key(0, -6);
-//         mq.decrease_key(9, -1);
-//         string mq_str = mq.to_string();
-//
-//         if (mq_str != "-6 -1 4 3 2 5 8 10 7 6")
-//         {
-//             cout << "Incorrect decrease key result. Expected empty queue but
-//             got : " << mq_str << endl;
-//         }
-//     }
-//     catch (exception &e)
-//     {
-//         cerr << "Error in decreasing key : " << e.what() << endl;
-//     }
-//
-//     delete[] int_data;
-// }
-//
+void test_decrease_key() {
+  int *int_data = new int[10];
+  for (int i = 0; i < 10; i++) {
+    int_data[i] = 10 - i;
+  }
+
+  try {
+    {
+      MinQueue<int> mq(int_data, 1);
+      mq.decrease_key(0, -6);
+      test("Decrease key on MinQueue", mq, "-6");
+    }
+
+    {
+      MinQueue<int> mq(int_data, 2);
+      mq.decrease_key(0, -6);
+      test("Decrease key on MinQueue", mq, "-6 10");
+    }
+
+    {
+      MinQueue<int> mq(int_data, 3);
+      mq.decrease_key(0, -6);
+      test("Decrease key on MinQueue", mq, "-6 9 10");
+    }
+
+    {
+      MinQueue<int> mq(int_data, 10);
+      mq.decrease_key(0, -6);
+      mq.decrease_key(9, -1);
+      test("Decrease key on MinQueue", mq, "-6 -1 4 3 2 5 8 10 7 6");
+    }
+  } catch (exception &e) {
+    cerr << "Error in decreasing key : " << e.what() << endl;
+  }
+
+  delete[] int_data;
+}
+
 void test_heapify() {
 
   int *empty_data = new int[0];
@@ -509,7 +517,7 @@ int main() {
   // test_insert();
   test_min();
   test_extract_min();
-  // test_decrease_key();
+  test_decrease_key();
   test_heapify();
   test_build_min_heap();
   // test_heapsort();

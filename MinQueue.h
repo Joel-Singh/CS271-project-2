@@ -24,7 +24,7 @@ public:
   // void insert(const T &item);
   T min();
   T extract_min();
-  void decrease(int i, T k);
+  void decrease_key(int i, T k);
   void min_heapify(int i);
   void build_heap();
   void sort(T *A);
@@ -32,6 +32,7 @@ public:
   void allocate(int n);
   std::string to_string() const;
   T &operator[](int position);
+  int parent(int i);
 
 private:
   int size;
