@@ -22,20 +22,11 @@ void test_minqueue() {
   try {
 
     MinQueue<int> empty;
-    string mq_str = empty.to_string();
-
-    if (mq_str != "") {
-      cout << "Incorrect result from empty constructor. Expected an"
-           << " empty string but got : " << mq_str << endl;
-    }
+    test("Empty minqueue is empty", empty, "");
 
     MinQueue<int> mq(int_data, 10);
-    mq_str = mq.to_string();
 
-    if (mq_str != "1 2 4 3 6 5 8 10 7 9") {
-      cout << "Incorrect result from empty constructor. Expected 1 2 4 "
-           << "3 6 5 8 10 7 9 but got : " << "`" << mq_str << "`" << endl;
-    }
+    test("Minqueue is heap on constructor", mq, "1 2 4 3 6 5 8 10 7 9");
   } catch (exception &e) {
     cerr << "Error creating the priority queue : " << e.what() << endl;
   }
