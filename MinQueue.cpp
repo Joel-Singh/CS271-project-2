@@ -269,7 +269,7 @@ template <typename T> void MinQueue<T>::set(int i, T k) {
 template <typename T> void MinQueue<T>::allocate(int n) {
   assert(n >= 0);
   this->size = n;
-  if (n >= capacity) {
+  if (n > capacity) {
     capacity = n * 2;
 
     T *newList = new T[capacity];
