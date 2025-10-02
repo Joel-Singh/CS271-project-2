@@ -212,7 +212,7 @@ template <typename T> void MinQueue<T>::swap(int i, int k) {
   assert(i < size);
   assert(k >= 0);
   assert(k < size);
-  int copy;
+  T copy;
 
   copy = list[i];
   list[i] = list[k];
@@ -304,6 +304,9 @@ template <typename T> int MinQueue<T>::parent(int i) {
   return parent;
 }
 
+//=================================================
+// insert
+//=================================================
 template <typename T> void MinQueue<T>::insert(const T item) {
   allocate(this->size + 1);
   set(this->size - 1, item);
