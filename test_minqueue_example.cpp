@@ -270,8 +270,6 @@ void test_heapify() {
   delete[] int_data;
 }
 
-// TODO need to modify the build min heap tests to use allocate and set intsead
-// of constructors
 void test_build_min_heap() {
 
   int *int_data = new int[10];
