@@ -206,6 +206,10 @@ template <typename T> int MinQueue<T>::right(int i) { return 2 * i + 2; }
 //  k: Node being swapped
 //=================================================
 template <typename T> void MinQueue<T>::swap(int i, int k) {
+  assert(i >= 0);
+  assert(i < size);
+  assert(k >= 0);
+  assert(k < size);
   int copy;
 
   copy = list[i];
