@@ -139,11 +139,10 @@ template <typename T> void MinQueue<T>::decrease_key(int i, T k) {
 
   list[i] = k;
   while (i > 0 && (list[parent(i)] > list[i])) {
-      swap(parent(i), i);
-      i = parent(i);
+    swap(parent(i), i);
+    i = parent(i);
   }
 }
-
 
 //=================================================
 // min_heapify
@@ -277,6 +276,6 @@ template <typename T> void MinQueue<T>::allocate(int n) {
 //=================================================
 template <typename T> int MinQueue<T>::parent(int i) {
   assert(i != 0);
-  int parent = (i-1)/2;
+  int parent = (i - 1) / 2;
   return parent;
 }
