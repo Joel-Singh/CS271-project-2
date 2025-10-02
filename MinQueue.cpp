@@ -259,21 +259,17 @@ template <typename T> void MinQueue<T>::set(int i, T k) {
 
 //=================================================
 // allocate
-// Ensures the list is of atleast size `n`. If more memory is needed, double the
-// needed memory is allocated to avoid allocations in the future..
+// Sets the size of the list to be of size `n`, i.e the valid indices are from 0
+// to n-1. If more memory is needed, double the needed memory is allocated to
+// avoid allocations in the future.
 //
 // PARAMETERS:
 //  n: The minimum needed size
 //=================================================
 template <typename T> void MinQueue<T>::allocate(int n) {
-  if (this->size >= n) {
-    return;
-  }
-
-  if (n < capacity) {
-    this->size = n;
-  } else {
-    this->size = n;
+  assert(n >= 0);
+  this->size = n;
+  if (n >= capacity) {
     capacity = n * 2;
 
     T *newList = new T[capacity];
