@@ -43,7 +43,7 @@ void time_test() {
     MinQueue<int> mq = create_unheaped_minqueue(input_size);
     mq.build_heap();
 
-    TIME_TEST((mq.insert(rand() % MAX_INT_VALUE)),
+    TIME_TEST((mq.insert(rand() % (MAX_INT_VALUE + 1))),
               "mq.insert of input size " + to_string(input_size))
   }
 
@@ -78,6 +78,24 @@ void time_test() {
     TIME_TEST((mq.min_heapify(0)),
               "mq.min_heapify of input size " + to_string(input_size))
   }
+
+  // build_heap
+  for (int input_size : input_sizes) {
+    MinQueue<int> mq = create_unheaped_minqueue(input_size);
+
+    TIME_TEST((mq.build_heap()),
+              "mq.build_heap of input size " + to_string(input_size))
+  }
+
+  // sort
+  for (int input_size : input_sizes) {
+    MinQueue<int> mq = create_unheaped_minqueue(input_size);
+    mq.build_heap();
+
+    int *A = new int[input_size];
+
+    TIME_TEST((mq.sort(A)), "mq.sort of input size " + to_string(input_size))
+  }
 }
 
 //=================================================
@@ -95,7 +113,7 @@ MinQueue<int> create_unheaped_minqueue(int n) {
   MinQueue<int> mq;
   mq.allocate(n);
   for (int i = 0; i < n; i++) {
-    int random = rand() % MAX_INT_VALUE;
+    int random = rand() % (MAX_INT_VALUE + 1);
     mq.set(i, random);
   }
 
