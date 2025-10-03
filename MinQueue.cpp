@@ -231,7 +231,8 @@ template <typename T> void MinQueue<T>::build_heap() {
 
 //=================================================
 // sort
-// Puts a sorted array consisting of the private member array's elements into A
+// Puts a sorted array consisting of the private member array's elements into
+// `A`
 //
 // PARAMETERS:
 //  A: The array to put the sorted elements into
@@ -274,7 +275,7 @@ template <typename T> void MinQueue<T>::set(int i, T k) {
 //=================================================
 // allocate
 // Sets the size of the list to be of size `n`, i.e the valid indices are from 0
-// to n-1. If more memory is needed, double the needed memory is allocated to
+// to `n`-1. If more memory is needed, double the needed memory is allocated to
 // avoid allocations in the future.
 //
 // PARAMETERS:
@@ -301,6 +302,13 @@ template <typename T> void MinQueue<T>::allocate(int n) {
 
 //=================================================
 // parent
+// Returns the parent index of `i`
+//
+// PARAMETERS:
+//  i: The index to find the parent of
+//
+// RETURN VALUE:
+//  The parent index of `i`
 //=================================================
 template <typename T> int MinQueue<T>::parent(int i) {
   assert(i != 0);
@@ -310,6 +318,10 @@ template <typename T> int MinQueue<T>::parent(int i) {
 
 //=================================================
 // insert
+// Inserts `item` into the correct spot in the priority queue.
+//
+// PARAMETERS:
+//  item: The item to insert into the priority queue
 //=================================================
 template <typename T> void MinQueue<T>::insert(const T item) {
   allocate(this->size + 1);
