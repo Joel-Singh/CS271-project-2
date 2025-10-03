@@ -475,7 +475,120 @@ void test_application_waitlist() {
        "(Sophomore)");
 }
 
-//
+// This is where Joel and I made our own test 
+//=========================================================================================
+
+// use an enum to represent severity level
+enum Severity { SEV1, SEV2, SEV3, SEV4 };
+
+// define a struct representing a student record
+struct PatientInfo {
+  string name;
+  Severity level;
+    // set patient admittance time to the hospital to the current time when the student record is
+  // created
+  std::chrono::system_clock::time_point admittance_time =
+      std::chrono::system_clock::now();
+
+  // overload < operator to compare students based on year and registration time
+  bool operator<(const PatientInfo &other) const {
+    return (level < other.level) ||
+           (level == other.level && admittance_time < other.admittance_time);
+  }
+
+  // overload > operator to compare students based on year and registration time
+  bool operator>(const PatientInfo &other) const {
+    return (level > other.level) ||
+           (level == other.level && admittance_time > other.admittance_time);
+  }
+
+  // overload == operator to compare students based on year and registration
+  // time
+  bool operator==(const PatientInfo &other) const {
+    return (level == other.level && admittance_time == other.admittance_time);
+  }
+
+  // overload != operator to compare students based on year and registration
+  // time
+  bool operator!=(const PatientInfo &other) const {
+    return (level != other.level || admittance_time != other.admittance_time);
+  }
+
+  // overload <= operator to compare students based on year and registration
+  // time
+  bool operator<=(const PatientInfo &other) const {
+    return (level < other.level) ||
+           (level == other.level && admittance_time <= other.admittance_time);
+  }
+
+  // overload >= operator to compare students based on year and registration
+  // time
+  bool operator>=(const PatientInfo &other) const {
+    return (level > other.level) ||
+           (level == other.level && admittance_time >= other.admittance_time);
+  }
+
+  // overload << operator to print student record
+  friend ostream &operator<<(ostream &os, const PatientInfo &patient) {
+    string level_str;
+    switch (patient.level) {
+    case SEV1:
+      level_str = "Critical";
+      break;
+    case SEV2:
+      level_str = "Major";
+      break;
+    case SEV3:
+      level_str = "Medium";
+      break;
+    case SEV4:
+      level_str = "Low";
+      break;
+    default:
+      level_str = "Warning";
+      break;
+    }
+    os << patient.name << " (" << level_str << ")";
+    return os;
+  }
+};
+
+void test_patient_prioritization() {
+  // create a minqueue of students
+  MinQueue<PatientInfo> waitlist;
+  waitlist.insert({"Alfa", SEV1});
+  waitlist.insert({"Bravo", SEV3});
+  waitlist.insert({"Charlie", SEV4});
+  waitlist.insert({"Delta", SEV2});
+  waitlist.insert({"Echo", SEV2});
+  waitlist.insert({"Foxtrot", SEV1});
+  waitlist.insert({"Golf", SEV4});
+  waitlist.insert({"Hotel", SEV3});
+  waitlist.insert({"India", SEV2});
+  waitlist.insert({"Juliett", SEV1});
+  waitlist.insert({"Kilo", SEV4});
+  waitlist.insert({"Lima", SEV3});
+  waitlist.insert({"Mike", SEV2});
+  waitlist.insert({"November", SEV1});
+
+  // process the waitlist and print the order in which patients are admitted
+  cout << "Patient Prioritization order:" << endl;
+
+  stringstream s;
+
+  PatientInfo patient = waitlist.extract_min();
+  s << patient;
+  // assume there are only 10 spots available
+  for (int i = 1; i < 10; i++) {
+    patient = waitlist.extract_min();
+    s << " " << patient;
+  }
+
+  test("Prioritization list extracted in right order", s.str(),
+       "Alfa (Critical) Foxtrot (Critical) Juliett (Critical) November (Critical) Delta (Major) "
+       "Echo (Major) India (Major) Mike (Major) Bravo (Medium) Hotel "
+       "(Medium)");
+}
 
 int main() {
 
@@ -489,6 +602,7 @@ int main() {
   test_heapsort();
   //
   test_application_waitlist();
+  test_patient_prioritization();
 
   time_test();
 
