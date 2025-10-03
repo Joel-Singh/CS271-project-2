@@ -47,44 +47,26 @@ void time_test() {
               "mq.insert of input size " + to_string(input_size))
   }
 
-  // MinQueue<int> mq;
-  // // TO-DO: generate large minqueue
-  // int size = -1; // TO-DO: set size of large minqueue
-  // int total = 0;
-  //
-  // int val = rand() % 100000;
-  // auto begin = std::chrono::high_resolution_clock::now();
-  //
-  // mq.insert(val);
-  //
-  // auto end = std::chrono::high_resolution_clock::now();
-  // auto elapsed =
-  //     std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
-  // cout << "insert time test took " << elapsed.count() << " nanoseconds" <<
-  // endl; total += elapsed.count();
-  //
-  // begin = std::chrono::high_resolution_clock::now();
-  // _ = mq.extract_min();
-  // end = std::chrono::high_resolution_clock::now();
-  // elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end -
-  // begin); cout << "extract min time test took " << elapsed.count() << "
-  // nanoseconds "
-  //      << endl;
-  // total += elapsed.count();
-  //
-  // int last_index = size - 1;  // indexing starts at 0
-  // int new_val = mq.min() - 1; // ensure we're decreasing the key
-  // begin = std::chrono::high_resolution_clock::now();
-  //
-  // mq.decrease_key(last_index, new_val);
-  //
-  // end = std::chrono::high_resolution_clock::now();
-  // elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end -
-  // begin); cout << "decrease key time test took " << elapsed.count() << "
-  // nanoseconds "
-  //      << endl;
-  // total += elapsed.count();
-  // cout << " Total time : " << total << endl;
+  // extract_min
+  for (int input_size : input_sizes) {
+    MinQueue<int> mq = create_unheaped_minqueue(input_size);
+    mq.build_heap();
+
+    TIME_TEST((mq.extract_min()),
+              "mq.extract_min of input size " + to_string(input_size))
+  }
+
+  // decrease_key
+  for (int input_size : input_sizes) {
+    MinQueue<int> mq = create_unheaped_minqueue(input_size);
+    mq.build_heap();
+
+    int last_index = input_size - 1;
+    int new_val = mq.min() - 1; // ensure we're decreasing the key
+
+    TIME_TEST((mq.decrease_key(last_index, new_val)),
+              "mq.decrease_key of input size " + to_string(input_size))
+  }
 }
 
 //=================================================
