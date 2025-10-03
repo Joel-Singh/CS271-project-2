@@ -4,6 +4,8 @@
 #include <iostream>
 using namespace std;
 
+const int MAX_INT_VALUE = 100000;
+
 //=================================================
 // Macro: TIME_TEST
 // Prints the amount of time it takes to do `call`
@@ -27,13 +29,22 @@ void time_test() {
   cout << "===================" << endl;
   cout << "Starting Time Tests" << endl;
   cout << "===================" << endl;
-  int input_sizes[5] = {1, 10, 100, 1000, 10000};
+  int input_sizes[6] = {1, 10, 100, 1000, 10000, 100000};
 
   // min
   for (int input_size : input_sizes) {
     MinQueue<int> mq = create_unheaped_minqueue(input_size);
     mq.build_heap();
     TIME_TEST((mq.min()), "mq.min of input size " + to_string(input_size))
+  }
+
+  // insert
+  for (int input_size : input_sizes) {
+    MinQueue<int> mq = create_unheaped_minqueue(input_size);
+    mq.build_heap();
+
+    TIME_TEST((mq.insert(rand() % MAX_INT_VALUE)),
+              "mq.insert of input size " + to_string(input_size))
   }
 
   // MinQueue<int> mq;
@@ -91,7 +102,7 @@ MinQueue<int> create_unheaped_minqueue(int n) {
   MinQueue<int> mq;
   mq.allocate(n);
   for (int i = 0; i < n; i++) {
-    int random = rand() % 100000;
+    int random = rand() % MAX_INT_VALUE;
     mq.set(i, random);
   }
 
