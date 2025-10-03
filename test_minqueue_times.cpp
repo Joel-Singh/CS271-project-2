@@ -38,6 +38,8 @@ void time_test() {
     TIME_TEST((mq.min()), "mq.min of input size " + to_string(input_size))
   }
 
+  cout << endl;
+
   // insert
   for (int input_size : input_sizes) {
     MinQueue<int> mq = create_unheaped_minqueue(input_size);
@@ -47,6 +49,8 @@ void time_test() {
               "mq.insert of input size " + to_string(input_size))
   }
 
+  cout << endl;
+
   // extract_min
   for (int input_size : input_sizes) {
     MinQueue<int> mq = create_unheaped_minqueue(input_size);
@@ -55,6 +59,8 @@ void time_test() {
     TIME_TEST((mq.extract_min()),
               "mq.extract_min of input size " + to_string(input_size))
   }
+
+  cout << endl;
 
   // decrease_key
   for (int input_size : input_sizes) {
@@ -68,6 +74,8 @@ void time_test() {
               "mq.decrease_key of input size " + to_string(input_size))
   }
 
+  cout << endl;
+
   // min_heapify
   for (int input_size : input_sizes) {
     MinQueue<int> mq = create_unheaped_minqueue(input_size);
@@ -79,6 +87,8 @@ void time_test() {
               "mq.min_heapify of input size " + to_string(input_size))
   }
 
+  cout << endl;
+
   // build_heap
   for (int input_size : input_sizes) {
     MinQueue<int> mq = create_unheaped_minqueue(input_size);
@@ -86,6 +96,8 @@ void time_test() {
     TIME_TEST((mq.build_heap()),
               "mq.build_heap of input size " + to_string(input_size))
   }
+
+  cout << endl;
 
   // sort
   for (int input_size : input_sizes) {
@@ -96,6 +108,8 @@ void time_test() {
 
     TIME_TEST((mq.sort(A)), "mq.sort of input size " + to_string(input_size))
   }
+
+  cout << endl;
 }
 
 //=================================================
