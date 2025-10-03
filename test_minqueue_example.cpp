@@ -459,11 +459,20 @@ void test_application_waitlist() {
   // process the waitlist and print the order in which students are registered
   cout << "Registration order:" << endl;
 
+  stringstream s;
+
+  StudentRecord student = waitlist.extract_min();
+  s << student;
   // assume there are only 10 spots available
-  for (int i = 0; i < 10; i++) {
-    StudentRecord student = waitlist.extract_min();
-    cout << student << endl;
+  for (int i = 1; i < 10; i++) {
+    student = waitlist.extract_min();
+    s << " " << student;
   }
+
+  test("Waitlist extracted in right order", s.str(),
+       "Alice (Senior) Eve (Senior) Ivan (Senior) Olivia (Senior) Bob (Junior) "
+       "Frank (Junior) Judy (Junior) Peggy (Junior) Charlie (Sophomore) Grace "
+       "(Sophomore)");
 }
 
 //
