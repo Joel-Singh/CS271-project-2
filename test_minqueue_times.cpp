@@ -67,6 +67,17 @@ void time_test() {
     TIME_TEST((mq.decrease_key(last_index, new_val)),
               "mq.decrease_key of input size " + to_string(input_size))
   }
+
+  // min_heapify
+  for (int input_size : input_sizes) {
+    MinQueue<int> mq = create_unheaped_minqueue(input_size);
+    mq.build_heap();
+
+    mq.set(0, MAX_INT_VALUE);
+
+    TIME_TEST((mq.min_heapify(0)),
+              "mq.min_heapify of input size " + to_string(input_size))
+  }
 }
 
 //=================================================
